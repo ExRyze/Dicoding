@@ -1,0 +1,14 @@
+{
+  "name": "belajar-membuat-aplikasi-back-end-untuk-pemula",
+  "version": "1.0.0",
+  "description": "Dicoding Submission",
+  "main": "index.js",
+  "scripts": {
+    "start": "node scr/hapi.js"
+  },
+  "author": "ExRyze",
+  "license": "ISC",
+  "dependencies": {
+    "@hapi/hapi": "^21.3.9"
+  }
+}
