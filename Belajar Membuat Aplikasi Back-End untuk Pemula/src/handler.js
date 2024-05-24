@@ -70,10 +70,16 @@ const getBooks = (request, h) => {
     }
   }
 
+  let tmpBooks = [];
+  rspBooks.forEach(book => {
+    let picked = (({ id, name, publisher }) => ({ id, name, publisher }))(book);
+    tmpBooks.push(picked);
+  });
+
   const response = h.response({
     status: 'success',
     data: {
-      books: rspBooks
+      books: tmpBooks
     }
   });
   response.code(200);
@@ -82,13 +88,13 @@ const getBooks = (request, h) => {
 
 const getBook = (request, h) => {
   const { bookId } = request.params;
-  const check = books.filter((book) => {return book.id === bookId;}).length > 0;
+  const index = books.findIndex((book) => {return book.id === bookId;});
 
-  if (check) {
+  if (index !== -1) {
     const response = h.response({
       status: 'success',
       data: {
-        book: books.filter((book) => {return book.id === bookId;})
+        book: books[index]
       }
     });
     response.code(200);
